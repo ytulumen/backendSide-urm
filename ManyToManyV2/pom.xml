@@ -28,9 +28,12 @@
     </build>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring.version>4.0.0.RELEASE</spring.version>
+        <spring.version>4.3.1.RELEASE</spring.version>
+        <springsecurity.version>4.1.1.RELEASE</springsecurity.version>
         <hibernate.version>4.1.9.Final</hibernate.version>
         <mysql.connector.version>5.1.31</mysql.connector.version>
+        <springsecurityoauth2.version>2.0.13.RELEASE</springsecurityoauth2.version>
+
 
     </properties>
     <dependencies>
@@ -155,6 +158,23 @@
             <artifactId>slf4j-api</artifactId>
             <version>1.7.5</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.security.oauth</groupId>
+            <artifactId>spring-security-oauth2</artifactId>
+            <version>${springsecurityoauth2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${springsecurity.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${springsecurity.version}</version>
+        </dependency>
+
+
     </dependencies>
 
 </project>
