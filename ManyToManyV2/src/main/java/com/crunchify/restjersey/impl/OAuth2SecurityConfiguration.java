@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.provider.ClientDetailsService;
 import org.springframework.security.oauth2.provider.approval.ApprovalStore;
@@ -22,7 +23,7 @@ import org.springframework.security.oauth2.provider.token.store.InMemoryTokenSto
 public class OAuth2SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private UserDetailsService userDetailsService;
+    private MyUserDetails myUserDetails;
 
     @Autowired
     public void globalUserDetails(AuthenticationManagerBuilder auth) throws Exception {
@@ -57,8 +58,8 @@ public class OAuth2SecurityConfiguration extends WebSecurityConfigurerAdapter {
     public TokenStoreUserApprovalHandler userApprovalHandler(TokenStore tokenStore){
         TokenStoreUserApprovalHandler handler = new TokenStoreUserApprovalHandler();
         handler.setTokenStore(tokenStore);
-        handler.setRequestFactory(new DefaultOAuth2RequestFactory(clientDetailsService));
-        handler.setClientDetailsService(clientDetailsService);
+ //       handler.setRequestFactory(new DefaultOAuth2RequestFactory(myUserDetails));
+//        handler.setClientDetailsService(myUserDetails);
         return handler;
     }
 
