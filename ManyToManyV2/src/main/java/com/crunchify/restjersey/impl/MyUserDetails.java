@@ -2,6 +2,7 @@ package com.crunchify.restjersey.impl;
 
 import com.yasin.model.User;
 import com.yasin.usr.AbsManager;
+import com.yasin.usr.UserManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -15,11 +16,11 @@ import java.util.List;
 @Component
 public class MyUserDetails implements UserDetailsService{
     @Autowired
-    private AbsManager absManager;
+    private UserManager userManager;
 
     @Override
     public org.springframework.security.core.userdetails.UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        List<User> users = absManager.findAll();
+        List<User> users = userManager.findAll();
 
         for (User user : users) {
             if(user.getName() == s){
