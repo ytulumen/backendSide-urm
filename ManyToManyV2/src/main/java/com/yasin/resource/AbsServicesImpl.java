@@ -1,4 +1,4 @@
-package com.crunchify.restjersey.impl;
+package com.yasin.resource;
 
 import com.google.gson.Gson;
 import com.yasin.usr.AbsManager;

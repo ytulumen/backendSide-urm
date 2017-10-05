@@ -1,20 +1,20 @@
-package com.crunchify.restjersey.impl;
+package com.yasin.usr.impl;
 
-import com.yasin.model.User;
-import com.yasin.usr.AbsManager;
-import com.yasin.usr.UserManager;
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
-import java.util.List;
+import com.yasin.model.User;
+import com.yasin.usr.UserManager;
 
-@Component
-public class MyUserDetails implements UserDetailsService{
+@Service(value = "userDetailsService")
+public class MyUserDetailsServiceImpl implements UserDetailsService{
     @Autowired
     private UserManager userManager;
 

@@ -1,4 +1,4 @@
-package com.yasin;
+package com.yasin.filter;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletResponse;

@@ -1,4 +1,4 @@
-package com.crunchify.restjersey.impl;
+package com.yasin.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -11,7 +11,6 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.approval.UserApprovalHandler;
 import org.springframework.security.oauth2.provider.token.TokenStore;
-import org.springframework.stereotype.Repository;
 
 @Configuration
 @EnableAuthorizationServer
@@ -31,7 +30,6 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-
         clients.inMemory()
                 .withClient("my-trusted-client")
                 .authorizedGrantTypes("password", "authorization_code", "refresh_token", "implicit")

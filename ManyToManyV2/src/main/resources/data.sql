@@ -1,0 +1,1 @@
+insert into testdbyasin.FCUSER(id, create_date, name, password, update_date) values (1, sysdate(), 'abbas', '123', sysdate());

@@ -1,4 +1,4 @@
-package com.crunchify.restjersey.impl;
+package com.yasin.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -20,12 +20,14 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        http.
-                anonymous().disable()
-                .requestMatchers().antMatchers("/user/**")
-                .and().authorizeRequests()
-                .antMatchers("/user/**").access("hasRole('ADMIN')")
-                .and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
+        http.authorizeRequests().anyRequest().permitAll();
+        http
+            .anonymous().disable()
+            .requestMatchers().antMatchers("/rest/**")
+        .and()
+            .authorizeRequests().antMatchers("/rest/**").hasAnyRole("ADMIN", "USER")
+        .and()
+            .exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
     }
 
 }

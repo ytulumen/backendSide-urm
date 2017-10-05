@@ -1,6 +1,7 @@
-package com.crunchify.restjersey.impl;
+package com.yasin.resource;
 
 import com.yasin.model.UserRoles;
+
 import org.springframework.stereotype.Component;
 
 import javax.ws.rs.Path;
