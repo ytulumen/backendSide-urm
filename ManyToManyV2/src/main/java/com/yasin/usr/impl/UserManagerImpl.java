@@ -17,5 +17,10 @@ import java.util.List;
 
 @Service(value = "userManager")
 public class UserManagerImpl extends AbsManagerImpl<User> implements UserManager{
-
+    @Autowired
+    UserDAO userDAO;
+    @Override
+    public User findbyName(String name) {
+        return userDAO.findbyName(name);
+    }
 }

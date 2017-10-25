@@ -11,8 +11,7 @@ import java.util.List;
 
 
 public interface UserDAO extends AbsDAO<User> {
-/*    void insertUser(User user);
-    void deleteUser(User user);
-    User findUserbyID(int id);
-    List<User> findAllUsers();*/
+
+   public User findbyName(String name);
+
 }

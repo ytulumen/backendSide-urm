@@ -8,5 +8,5 @@ import com.yasin.model.User;
 import java.util.List;
 
 public interface UserManager extends AbsManager<User>{
-
+    public User findbyName(String name);
 }

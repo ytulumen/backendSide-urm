@@ -1,1 +1,11 @@
-insert into testdbyasin.FCUSER(id, create_date, name, password, update_date) values (1, sysdate(), 'abbas', '123', sysdate());
+insert into testdbyasin.User(id, name, password) values (1, 'abbas', '123')
+insert into testdbyasin.User(id, name, password) values (2, 'yasin', 'tlmn')
+insert into testdbyasin.User(id, name, password) values (3, 'trbzn', 'spr')
+insert into testdbyasin.User(id, name, password) values (4, 'ayse', 'yldrm')
+insert into testdbyasin.ROLES (id, name) values (1, 'USER_ADMIN')
+insert into testdbyasin.ROLES (id, name) values (2, 'ROLE_ADMIN')
+insert into testdbyasin.ROLES (id, name) values (3, 'MANAGER_ADMIN')
+insert into testdbyasin.USERROLES (id, name, user_id, role_id) values (1, 'ABBUSR', 1, 1)
+insert into testdbyasin.USERROLES (id, name, user_id, role_id) values (2, 'YASROLE', 2, 2)
+insert into testdbyasin.USERROLES (id, name, user_id, role_id) values (3, 'TRBZMNGR', 3, 3)
+insert into testdbyasin.USERROLES (id, name, user_id, role_id) values (4, 'AYSEMNGR', 4, 3)

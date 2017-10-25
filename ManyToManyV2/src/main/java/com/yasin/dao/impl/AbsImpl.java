@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
@@ -23,7 +24,7 @@ import java.util.List;
 public abstract class AbsImpl<T extends AbsClass> implements AbsDAO<T> {
 
     @PersistenceContext
-    private EntityManager entityManager;
+    protected EntityManager entityManager;
 
     private Class<T> clazz;
 
@@ -59,7 +60,6 @@ public abstract class AbsImpl<T extends AbsClass> implements AbsDAO<T> {
         item1.setName(item.getName());
         //DateFormat dateTimeInstance = SimpleDateFormat.getDateTimeInstance();
         item1.setUpdate(Calendar.getInstance().getTime());
-        item1.setPassword(item.getPassword());
         entityManager.merge(item1);
         //entityManager.persist(oldValue);
     }
@@ -72,4 +72,6 @@ public abstract class AbsImpl<T extends AbsClass> implements AbsDAO<T> {
         cq.select(root);
         return entityManager.createQuery(cq).getResultList();
     }
+
+
 }

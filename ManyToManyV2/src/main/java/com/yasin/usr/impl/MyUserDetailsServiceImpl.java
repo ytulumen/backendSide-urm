@@ -3,9 +3,12 @@ package com.yasin.usr.impl;
 import java.util.Arrays;
 import java.util.List;
 
+import com.yasin.model.UserRoles;
+import com.yasin.usr.UserRolesManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
@@ -17,21 +20,27 @@ import com.yasin.usr.UserManager;
 public class MyUserDetailsServiceImpl implements UserDetailsService{
     @Autowired
     private UserManager userManager;
+    @Autowired
+    private UserRolesManager userRolesManager;
 
     @Override
     public org.springframework.security.core.userdetails.UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        List<User> users = userManager.findAll();
-
-        for (User user : users) {
-            if(user.getName() == s){
-                GrantedAuthority authority = new SimpleGrantedAuthority("user");
-                org.springframework.security.core.userdetails.UserDetails userDetails =
-                        (org.springframework.security.core.userdetails.UserDetails)
-                        new org.springframework.security.core.userdetails.User(user.getName(),
-                        user.getPassword(), Arrays.asList(authority));
-                return userDetails;
-            }
+        User user = userManager.findbyName(s);
+        UserRoles userRoles = null;
+        List<UserRoles> userRolesList = userRolesManager.findAll();
+        for(UserRoles userRoles1: userRolesList ){
+            if(userRoles1.getUser().getId()==user.getId())
+                userRoles = userRoles1;
         }
-        return null;
+
+        GrantedAuthority authority = new SimpleGrantedAuthority(userRoles.getRole().getName());
+        UserDetails userDetails =
+                new org.springframework.security.core.userdetails.User(user.getName(),
+                        user.getPassword(), Arrays.asList(authority));
+
+       /* UserRoles userRoles = userRolesManager.findbyID(1);
+        System.out.println(userRoles.getUser().getName() + " " + userRoles.getRole().getName());*/
+
+        return userDetails;
     }
 }

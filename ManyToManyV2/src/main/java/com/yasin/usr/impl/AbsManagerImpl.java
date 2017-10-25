@@ -40,4 +40,5 @@ public abstract class AbsManagerImpl<T> implements AbsManager<T> {
     public void edit(T item) {
         absDAO.edit(item);
     }
+
 }
