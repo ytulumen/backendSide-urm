@@ -2,25 +2,19 @@ package com.yasin.dao.impl;
 
 import com.yasin.dao.AbsDAO;
 import com.yasin.model.AbsClass;
-import org.springframework.beans.BeanUtils;
-import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
+import com.yasin.model.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import javax.persistence.criteria.Selection;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
-//@Repository(value = "absDAO")
 public abstract class AbsImpl<T extends AbsClass> implements AbsDAO<T> {
 
     @PersistenceContext
@@ -28,11 +22,16 @@ public abstract class AbsImpl<T extends AbsClass> implements AbsDAO<T> {
 
     private Class<T> clazz;
 
+
+
+    private String query;
     public void setClassType(Class clazz)
     {
         this.clazz = clazz;
     }
-
+    public void setQuery(String query) {
+        this.query = query;
+    }
     @Override
     public void insert(T item) throws ParseException {
         DateFormat dateTimeInstance = SimpleDateFormat.getDateTimeInstance();
@@ -73,5 +72,8 @@ public abstract class AbsImpl<T extends AbsClass> implements AbsDAO<T> {
         return entityManager.createQuery(cq).getResultList();
     }
 
-
+    @Override
+    public T findbyName(String name) {
+        return entityManager.createNamedQuery(query, clazz).setParameter("name", name).getSingleResult();
+    }
 }

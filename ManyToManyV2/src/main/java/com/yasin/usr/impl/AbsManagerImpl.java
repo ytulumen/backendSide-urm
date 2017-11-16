@@ -5,7 +5,6 @@ import com.yasin.usr.AbsManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
 import java.text.ParseException;
 import java.util.List;
 
@@ -33,6 +32,11 @@ public abstract class AbsManagerImpl<T> implements AbsManager<T> {
     @Override
     public List<T> findAll() {
         return absDAO.findAll();
+    }
+
+    @Override
+    public T findbyName(String name) {
+        return absDAO.findbyName(name);
     }
 
     @Transactional

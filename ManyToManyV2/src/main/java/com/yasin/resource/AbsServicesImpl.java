@@ -13,7 +13,6 @@ public abstract class AbsServicesImpl<T> {
     @Autowired
     private AbsManager<T> absManager;
 
-//    @Path("/name={name}")
     @POST
     @Consumes(javax.ws.rs.core.MediaType.APPLICATION_JSON)
     public void add(T item) {
@@ -48,7 +47,6 @@ public abstract class AbsServicesImpl<T> {
         }
     }
 
-//    @Path("/which={turn}/name={name}/id={id}")
     @PUT
     @Consumes(javax.ws.rs.core.MediaType.APPLICATION_JSON)
     public void edit(T item) {
@@ -63,7 +61,6 @@ public abstract class AbsServicesImpl<T> {
         }
     }
 
-//    @Path("/which={turn}")
     @GET
     @Produces("application/json")
 
@@ -83,9 +80,26 @@ public abstract class AbsServicesImpl<T> {
             Gson gson = new Gson();
             T item = absManager.findbyID(id);
             return  gson.toJson(item);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Path("/name={name}")
+    @GET
+    @Produces("application/json")
+    public String findByName(@PathParam("name") String name) {
+
+
+        try {
+            Gson gson = new Gson();
+            T item = absManager.findbyName(name);
+            return  gson.toJson(item);
         } catch (IllegalArgumentException | NullPointerException e){
             e.printStackTrace();
         }
-        return "";
+        return null;
     }
+
 }

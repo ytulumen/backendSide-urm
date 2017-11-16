@@ -38,9 +38,6 @@ public class MyUserDetailsServiceImpl implements UserDetailsService{
                 new org.springframework.security.core.userdetails.User(user.getName(),
                         user.getPassword(), Arrays.asList(authority));
 
-       /* UserRoles userRoles = userRolesManager.findbyID(1);
-        System.out.println(userRoles.getUser().getName() + " " + userRoles.getRole().getName());*/
-
         return userDetails;
     }
 }

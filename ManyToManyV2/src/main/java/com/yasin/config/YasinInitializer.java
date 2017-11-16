@@ -5,7 +5,6 @@ import javax.servlet.Filter;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter;
-import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import com.yasin.filter.CORSFilter;

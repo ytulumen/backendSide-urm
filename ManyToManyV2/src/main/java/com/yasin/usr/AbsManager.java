@@ -9,4 +9,6 @@ public interface AbsManager<T> {
     void edit(T item);
     T findbyID(int id);
     List<T> findAll();
+    T findbyName(String name);
+
 }

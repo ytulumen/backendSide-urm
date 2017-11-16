@@ -1,7 +1,5 @@
 package com.yasin.dao;
 
-import com.yasin.dao.impl.AbsImpl;
-
 import java.text.ParseException;
 import java.util.List;
 
@@ -14,4 +12,5 @@ public interface AbsDAO<T> {
     void edit(T item);
     T findbyID(int id);
     List<T> findAll();
+    T findbyName(String name);
 }
