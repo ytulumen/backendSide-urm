@@ -96,7 +96,7 @@ public abstract class AbsServicesImpl<T> {
             Gson gson = new Gson();
             T item = absManager.findbyName(name);
             return  gson.toJson(item);
-        } catch (IllegalArgumentException | NullPointerException e){
+        } catch (Exception e){
             e.printStackTrace();
         }
         return null;
